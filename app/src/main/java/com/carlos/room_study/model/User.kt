@@ -11,5 +11,4 @@ data class User(
 
     @ColumnInfo(name = "First name")val firstName: String,
     @ColumnInfo(name = "Last name")val lastName: String,
-    @ColumnInfo(name = "Age")val age: Int
 )

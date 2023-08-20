@@ -6,15 +6,79 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="24dp"
-    tools:context=".ui.AddActivity">
+    tools:context=".ui.AddNoteActivity">
+
+    <LinearLayout
+        android:id="@+id/headerTitle"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginTop="30dp"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/backBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginEnd="10dp"
+            android:backgroundTint="#3B3B3B"
+            app:cardCornerRadius="15dp">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:padding="10dp"
+                android:src="@drawable/ic_arrow_back" />
+
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/searchBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center|end"
+            android:layout_marginEnd="10dp"
+            android:backgroundTint="#3B3B3B"
+            app:cardCornerRadius="15dp">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:src="@drawable/ic_search" />
+
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/infoBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:backgroundTint="#3B3B3B"
+            app:cardCornerRadius="15dp">
+
+            <ImageView
+                android:id="@+id/imageView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:contentDescription="Note"
+                android:padding="10dp"
+                android:src="@drawable/ic_info" />
+
+        </androidx.cardview.widget.CardView>
+    </LinearLayout>
 
 
     <EditText
         android:id="@+id/etFirstName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="60dp"
-        android:hint="First Name"
+        android:layout_marginTop="20dp"
+        android:hint="Title"
         android:inputType="textPersonName" />
 
 
@@ -25,16 +89,6 @@
         android:layout_marginTop="30dp"
         android:hint="Last Name"
         android:inputType="textPersonName" />
-
-
-    <EditText
-        android:id="@+id/etAge"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
-        android:autofillHints="name"
-        android:hint="Age"
-        android:inputType="number" />
 
 
     <Button

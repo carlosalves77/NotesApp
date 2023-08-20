@@ -1,34 +1,36 @@
 package com.carlos.room_study.ui
 
+
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextUtils
-import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
-import com.carlos.room_study.R
-import com.carlos.room_study.adapter.UserAdapter
 import com.carlos.room_study.databinding.ActivityAddBinding
 import com.carlos.room_study.model.User
-import com.carlos.room_study.viewmodel.MainViewModel
-import com.google.android.material.textfield.TextInputEditText
+import com.carlos.room_study.viewmodel.UserViewModel
 
-class AddActivity : AppCompatActivity() {
+class AddNoteActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityAddBinding
-    private lateinit var mMainViewModel: MainViewModel
+    private lateinit var mUserViewModel: UserViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         binding = ActivityAddBinding.inflate(layoutInflater)
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
 
-        mMainViewModel = ViewModelProvider(this)[MainViewModel::class.java]
+        mUserViewModel = ViewModelProvider(this)[UserViewModel::class.java]
+
+        @Suppress("DEPRECATION")
+        window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_FULLSCREEN
+
 
         binding.confirmBtn.setOnClickListener {
             addUser()
+
         }
 
     }
@@ -37,13 +39,13 @@ class AddActivity : AppCompatActivity() {
 
         val firstName = binding.etFirstName.text.toString()
         val lastName = binding.etLastName.text.toString()
-        val age = binding.etAge.text
 
-        if (inputCheck(firstName, lastName, age)) {
+
+        if (inputCheck(firstName, lastName)) {
             // Create User Object
-            val user = User(0, firstName, lastName, Integer.parseInt(age.toString()))
+            val user = User(0, firstName, lastName)
 //            // Add Data to Database
-            mMainViewModel.addUser(user)
+            mUserViewModel.addUser(user)
             // Notify User
             Toast.makeText(this, "User added", Toast.LENGTH_SHORT).show()
             // Navigate Back
@@ -53,7 +55,7 @@ class AddActivity : AppCompatActivity() {
         }
     }
 
-    private fun inputCheck(firstName: String, lastName: String, age: Editable): Boolean {
-        return !(TextUtils.isEmpty(firstName) && TextUtils.isEmpty(lastName) && age.isEmpty())
+    private fun inputCheck(firstName: String, lastName: String): Boolean {
+        return !(TextUtils.isEmpty(firstName) && TextUtils.isEmpty(lastName))
     }
 }

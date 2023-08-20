@@ -4,31 +4,125 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.MainActivity">
+    tools:context=".ui.MainActivity"
+    android:padding="24dp"
+    >
+
+    <LinearLayout
+        android:id="@+id/headerTitle"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginTop="30dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:fontFamily="@font/roboto_regular"
+            android:text="Notes"
+            android:textColor="@color/white"
+            android:textSize="30sp"
+            android:textStyle="bold" />
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/searchBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#3B3B3B"
+            android:layout_gravity="center"
+            android:layout_marginEnd="10dp"
+            app:cardCornerRadius="15dp"
+            >
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_search"
+                android:padding="10dp"
+                />
+
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/infoBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#3B3B3B"
+            android:layout_gravity="center"
+            app:cardCornerRadius="15dp"
+            >
+
+            <ImageView
+                android:id="@+id/imageView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_info"
+                android:padding="10dp"
+                android:contentDescription="Note" />
+
+        </androidx.cardview.widget.CardView>
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/emptyNoteImage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:contentDescription="@string/empty_note"
+        android:src="@drawable/empty_note"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/emptyNoteText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Create your first note!"
+        android:textSize="20sp"
+        android:visibility="visible"
+        android:layout_marginTop="10dp"
+        android:fontFamily="@font/roboto_medium"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/emptyNoteImage" />
+
 
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="20dp"
+        android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintTop_toBottomOf="@+id/headerTitle" />
 
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/fab"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="24dp"
-            android:layout_marginBottom="24dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="10dp"
             android:clickable="true"
+            android:backgroundTint="#3B3B3B"
+            app:borderWidth="0dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:srcCompat="@drawable/ic_add" />
+            app:srcCompat="@drawable/ic_add"
+            android:contentDescription="fab" />
 
 
 

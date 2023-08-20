@@ -11,7 +11,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 
-class MainViewModel(application: Application): AndroidViewModel(application) {
+class UserViewModel(application: Application): AndroidViewModel(application) {
 
     private val repository: UserRepository
      var getAllUser: LiveData<List<User>>
