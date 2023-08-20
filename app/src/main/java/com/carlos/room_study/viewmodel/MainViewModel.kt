@@ -10,6 +10,7 @@ import com.carlos.room_study.repositories.UserRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
+
 class MainViewModel(application: Application): AndroidViewModel(application) {
 
     private val repository: UserRepository
@@ -24,6 +25,12 @@ class MainViewModel(application: Application): AndroidViewModel(application) {
     fun addUser(user: User) {
         viewModelScope.launch(Dispatchers.IO) {
             repository.insertUser(user)
+        }
+    }
+
+    fun deleteUser(user: User) {
+        viewModelScope.launch(Dispatchers.IO) {
+            repository.deleteUser(user)
         }
     }
 

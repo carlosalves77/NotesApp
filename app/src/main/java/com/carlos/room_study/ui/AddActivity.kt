@@ -46,6 +46,8 @@ class AddActivity : AppCompatActivity() {
             mMainViewModel.addUser(user)
             // Notify User
             Toast.makeText(this, "User added", Toast.LENGTH_SHORT).show()
+            // Navigate Back
+            finish()
         } else {
             Toast.makeText(this, "Please fill out all fields", Toast.LENGTH_SHORT).show()
         }
