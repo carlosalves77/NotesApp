@@ -9,10 +9,12 @@ import android.view.View
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import com.carlos.room_study.databinding.ActivityAddBinding
+import com.carlos.room_study.databinding.ActivityMainBinding
+import com.carlos.room_study.databinding.NotesRowBinding
 import com.carlos.room_study.model.User
 import com.carlos.room_study.viewmodel.UserViewModel
 
-class AddNoteActivity : AppCompatActivity() {
+class AddNoteActivity : AppCompatActivity(), View.OnClickListener {
 
     private lateinit var binding: ActivityAddBinding
     private lateinit var mUserViewModel: UserViewModel
@@ -28,11 +30,22 @@ class AddNoteActivity : AppCompatActivity() {
         window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_FULLSCREEN
 
 
-        binding.confirmBtn.setOnClickListener {
-            addUser()
+        binding.saveBtn.setOnClickListener(this)
+        binding.backBtn.setOnClickListener(this)
 
+    }
+
+    override fun onClick(v: View?) {
+        when (v?.id) {
+            binding.saveBtn.id -> {
+                addUser()
+            }
         }
-
+        when (v?.id) {
+            binding.backBtn.id -> {
+                finish()
+            }
+        }
     }
 
     private fun addUser() {
@@ -48,6 +61,7 @@ class AddNoteActivity : AppCompatActivity() {
             mUserViewModel.addUser(user)
             // Notify User
             Toast.makeText(this, "User added", Toast.LENGTH_SHORT).show()
+
             // Navigate Back
             finish()
         } else {
@@ -55,7 +69,11 @@ class AddNoteActivity : AppCompatActivity() {
         }
     }
 
+
+
     private fun inputCheck(firstName: String, lastName: String): Boolean {
         return !(TextUtils.isEmpty(firstName) && TextUtils.isEmpty(lastName))
     }
+
+
 }
