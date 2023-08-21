@@ -4,9 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:padding="24dp"
-    tools:context=".ui.AddNoteActivity">
+    android:orientation="vertical"
+    tools:context=".ui.NoteActivity">
 
     <LinearLayout
         android:id="@+id/headerTitle"
@@ -44,7 +44,7 @@
             android:orientation="horizontal">
 
             <androidx.cardview.widget.CardView
-                android:id="@+id/previewBtn"
+                android:id="@+id/editBtn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -56,12 +56,30 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:padding="10dp"
-                    android:src="@drawable/ic_eye" />
+                    android:src="@drawable/ic_edit" />
 
             </androidx.cardview.widget.CardView>
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/saveBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginEnd="10dp"
+                android:backgroundTint="#3B3B3B"
+                android:visibility="gone"
+                app:cardCornerRadius="15dp">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="10dp"
+                    android:src="@drawable/ic_save" />
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/deleteBtn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -74,7 +92,7 @@
                     android:layout_height="wrap_content"
                     android:contentDescription="Note"
                     android:padding="10dp"
-                    android:src="@drawable/ic_save" />
+                    android:src="@drawable/ic_delete" />
 
             </androidx.cardview.widget.CardView>
 
@@ -83,9 +101,8 @@
 
     </LinearLayout>
 
-
     <EditText
-        android:id="@+id/etFirstName"
+        android:id="@+id/etNoteTitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
@@ -95,13 +112,14 @@
         android:fontFamily="@font/roboto_light"
         android:textSize="40sp"
         android:hint="Title"
-        android:inputType="textMultiLine" >
+        android:inputType="textMultiLine"
+      >
 
         <requestFocus/>
     </EditText>
 
     <EditText
-        android:id="@+id/etLastName"
+        android:id="@+id/etNote"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
