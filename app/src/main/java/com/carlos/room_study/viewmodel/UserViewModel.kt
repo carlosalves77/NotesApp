@@ -11,10 +11,10 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 
-class UserViewModel(application: Application): AndroidViewModel(application) {
+class UserViewModel(application: Application) : AndroidViewModel(application) {
 
     private val repository: UserRepository
-     var getAllUser: LiveData<List<User>>
+    var getAllUser: LiveData<List<User>>
 
     init {
         val userDB = AppDatabase.getDatabase(application).userDao()
@@ -31,6 +31,12 @@ class UserViewModel(application: Application): AndroidViewModel(application) {
     fun deleteUser(userId: Int) {
         viewModelScope.launch(Dispatchers.IO) {
             repository.deleteUserById(userId)
+        }
+    }
+
+    fun updateUser(user: User) {
+        viewModelScope.launch(Dispatchers.IO) {
+            repository.updateUser(user)
         }
     }
 

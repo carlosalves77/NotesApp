@@ -6,6 +6,7 @@ import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
+import androidx.room.Update
 import com.carlos.room_study.model.User
 
 @Dao
@@ -19,4 +20,7 @@ interface UserDao {
 
     @Query("DELETE FROM users_table WHERE id = :id")
     suspend fun deleteUserByID(id: Int)
+
+    @Update(onConflict = OnConflictStrategy.REPLACE)
+    suspend fun updateUser(user: User)
 }

@@ -5,6 +5,7 @@
     android:id="@+id/notes_row"
     android:layout_width="match_parent"
     android:layout_height="100dp"
+    android:clickable="true"
     android:layout_marginBottom="20dp"
     android:padding="20dp"
     app:cardCornerRadius="10dp">
@@ -15,7 +16,6 @@
         android:layout_height="wrap_content"
         android:text="First Name"
         android:layout_gravity="center"
-        android:clickable="false"
         android:textColor="@color/black"
         android:textStyle="bold"
         android:textSize="23sp"

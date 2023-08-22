@@ -21,6 +21,7 @@ class UserAdapter() : RecyclerView.Adapter<UserAdapter.UserViewHolder>() {
 
     inner class UserViewHolder(val binding: NotesRowBinding) : RecyclerView.ViewHolder(binding.root)
 
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): UserViewHolder {
         return UserViewHolder(
             NotesRowBinding.inflate(
@@ -38,15 +39,13 @@ class UserAdapter() : RecyclerView.Adapter<UserAdapter.UserViewHolder>() {
     override fun onBindViewHolder(holder: UserViewHolder, position: Int) {
         val currentUser = user[position]
         holder.binding.etFirstName.text = currentUser.firstName
-        holder.binding.notesRow.setOnClickListener() {
-            val intent = Intent(holder.itemView.context, NoteActivity::class.java)
-            intent.putExtra("id", currentUser.id)
-            intent.putExtra("firstName", currentUser.firstName)
-            intent.putExtra("lastName", currentUser.lastName)
-            holder.itemView.context.startActivity(intent)
-        }
-//            onLongClick(holder, currentUser)
 
+        holder.binding.notesRow.setOnClickListener {
+            onNoteClicked(currentUser, holder)
+        }
+        holder.binding.etFirstName.setOnClickListener {
+            onNoteClicked(currentUser, holder)
+        }
         val rnd = Random
         val color: Int =
             android.graphics.Color.argb(255, rnd.nextInt(256), rnd.nextInt(256), rnd.nextInt(256))
@@ -62,26 +61,13 @@ class UserAdapter() : RecyclerView.Adapter<UserAdapter.UserViewHolder>() {
 
     }
 
-//    private fun onLongClick(holder: UserViewHolder, currentUser: User) {
-//        holder.binding.btnDelete.visibility = View.VISIBLE
-//        holder.binding.etFirstName.visibility = View.GONE
-//
-//        holder.binding.notesRow.backgroundTintList
-//        holder.binding.notesRow.setOnClickListener {
-//            Snackbar.make(
-//                it,
-//                "Are you sure you want to delete ${currentUser.firstName}?",
-//                Snackbar.LENGTH_INDEFINITE
-//            )
-//                .setAction("Yes") {
-//                    // Delete User
-//                    UserViewModel(Application()).deleteUser(currentUser)
-//                    holder.binding.btnDelete.visibility = View.GONE
-//                    holder.binding.etFirstName.visibility = View.VISIBLE
-//                }.show()
-//
-//        }
-//    }
+    private fun onNoteClicked(currentUser: User, holder: UserViewHolder) {
+        val intent = Intent(holder.itemView.context, NoteActivity::class.java)
+        intent.putExtra("id", currentUser.id)
+        intent.putExtra("firstName", currentUser.firstName)
+        intent.putExtra("lastName", currentUser.lastName)
+        holder.itemView.context.startActivity(intent)
+    }
 
 
 }
