@@ -20,4 +20,6 @@ class UserRepository(private val userDao: UserDao) {
         userDao.updateUser(user)
     }
 
+    fun searchDatabase(searchQuery: String): LiveData<List<User>> = userDao.searchDatabase(searchQuery)
+
 }

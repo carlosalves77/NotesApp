@@ -9,6 +9,6 @@ data class User(
     @PrimaryKey(autoGenerate = true)
     @ColumnInfo(name = "Id")val id: Int,
 
-    @ColumnInfo(name = "First name")val firstName: String,
+    @ColumnInfo(name = "name")val firstName: String,
     @ColumnInfo(name = "Last name")val lastName: String,
 )

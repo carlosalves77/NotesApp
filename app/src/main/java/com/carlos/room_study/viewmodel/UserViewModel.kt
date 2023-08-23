@@ -40,4 +40,6 @@ class UserViewModel(application: Application) : AndroidViewModel(application) {
         }
     }
 
+    fun searchDatabase(searchQuery: String): LiveData<List<User>> = repository.searchDatabase(searchQuery)
+
 }

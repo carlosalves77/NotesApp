@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">Room_Study</string>
     <string name="empty_note">EmptyNote</string>
+    <string name="search_note">Search Notes</string>
 </resources>

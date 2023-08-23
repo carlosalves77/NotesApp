@@ -44,23 +44,6 @@
             android:orientation="horizontal">
 
             <androidx.cardview.widget.CardView
-                android:id="@+id/previewBtn"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginEnd="10dp"
-                android:backgroundTint="#3B3B3B"
-                app:cardCornerRadius="15dp">
-
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:padding="10dp"
-                    android:src="@drawable/ic_eye" />
-
-            </androidx.cardview.widget.CardView>
-
-            <androidx.cardview.widget.CardView
                 android:id="@+id/saveBtn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -92,7 +75,7 @@
         android:maxLength="50"
         android:ems="10"
         android:background="@null"
-        android:fontFamily="@font/roboto_light"
+        android:fontFamily="@font/nunito_regular"
         android:textSize="40sp"
         android:hint="Title"
         android:inputType="textMultiLine" >
@@ -107,6 +90,7 @@
         android:ems="10"
         android:layout_marginTop="30dp"
         android:background="@null"
+        android:fontFamily="@font/nunito_regular"
         android:textSize="18sp"
         android:hint="Type something..."
         android:inputType="textMultiLine" >

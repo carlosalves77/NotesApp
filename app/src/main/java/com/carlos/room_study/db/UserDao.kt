@@ -23,4 +23,7 @@ interface UserDao {
 
     @Update(onConflict = OnConflictStrategy.REPLACE)
     suspend fun updateUser(user: User)
+
+    @Query("SELECT * FROM users_table WHERE name LIKE :searchQuery")
+    fun searchDatabase(searchQuery: String): LiveData<List<User>>
 }

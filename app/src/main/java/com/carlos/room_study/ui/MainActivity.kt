@@ -4,13 +4,14 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import androidx.appcompat.widget.SearchView
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.carlos.room_study.adapter.UserAdapter
 import com.carlos.room_study.databinding.ActivityMainBinding
 import com.carlos.room_study.viewmodel.UserViewModel
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), View.OnClickListener {
 
     private lateinit var binding: ActivityMainBinding
     private val adapter = UserAdapter()
@@ -31,12 +32,47 @@ class MainActivity : AppCompatActivity() {
             adapter.setData(user)
         }
 
-        binding.fab.setOnClickListener {
-            startActivity(Intent(this, AddNoteActivity::class.java))
+        binding.fab.setOnClickListener(this)
+        binding.searchBtn.setOnClickListener(this)
+
+        binding.searchView.setOnCloseListener {
+            onCloseSearchView()
         }
+
+        binding.searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                return false
+            }
+
+            override fun onQueryTextChange(newText: String?): Boolean {
+                filterSearchView(newText!!)
+               return true
+            }
+
+        })
 
         setRv()
         emptyDatabaseCheck()
+    }
+
+    override fun onClick(v: View?) {
+        when (v?.id) {
+            binding.fab.id -> {
+                startActivity(Intent(this, AddNoteActivity::class.java))
+            }
+        }
+        when (v?.id) {
+            binding.searchBtn.id -> {
+                binding.searchView.visibility = View.VISIBLE
+                binding.searchBtn.visibility = View.GONE
+                binding.title.visibility = View.GONE
+                binding.infoBtn.visibility = View.GONE
+
+                binding.searchView.isIconified = false
+                binding.searchView.requestFocus()
+
+            }
+        }
     }
 
     private fun emptyDatabaseCheck() {
@@ -58,4 +94,22 @@ class MainActivity : AppCompatActivity() {
         recyclerView.layoutManager = LinearLayoutManager(this)
 
     }
+
+    private fun onCloseSearchView() : Boolean {
+        binding.searchView.visibility = View.GONE
+        binding.searchBtn.visibility = View.VISIBLE
+        binding.title.visibility = View.VISIBLE
+        binding.infoBtn.visibility = View.VISIBLE
+        return false
+    }
+
+    private fun filterSearchView(query: String) {
+        val searchQuery = "%$query%"
+        mUserViewModel.searchDatabase(searchQuery).observe(this) { list ->
+            list.let {
+                adapter.setData(it)
+            }
+        }
+    }
+
 }
