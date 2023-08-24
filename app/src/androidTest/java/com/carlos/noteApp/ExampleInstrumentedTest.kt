@@ -1,4 +1,4 @@
-package com.carlos.room_study
+package com.carlos.noteApp
 
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4

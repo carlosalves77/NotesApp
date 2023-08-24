@@ -1,8 +1,8 @@
-package com.carlos.room_study.repositories
+package com.carlos.noteApp.repositories
 
 import androidx.lifecycle.LiveData
-import com.carlos.room_study.db.NoteDao
-import com.carlos.room_study.model.Note
+import com.carlos.noteApp.db.NoteDao
+import com.carlos.noteApp.model.Note
 
 class NoteRepository(private val noteDao: NoteDao) {
 

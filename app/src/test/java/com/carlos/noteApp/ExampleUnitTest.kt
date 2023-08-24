@@ -1,4 +1,4 @@
-package com.carlos.room_study
+package com.carlos.noteApp
 
 import org.junit.Test
 

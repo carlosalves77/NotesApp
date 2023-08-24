@@ -1,4 +1,4 @@
-package com.carlos.room_study.ui
+package com.carlos.noteApp.ui
 
 
 import androidx.appcompat.app.AppCompatActivity
@@ -7,9 +7,9 @@ import android.text.TextUtils
 import android.view.View
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
-import com.carlos.room_study.databinding.ActivityAddBinding
-import com.carlos.room_study.model.Note
-import com.carlos.room_study.viewmodel.NoteViewModel
+import com.carlos.noteApp.model.Note
+import com.carlos.noteApp.viewmodel.NoteViewModel
+import com.carlos.noteApp.databinding.ActivityAddBinding
 
 class AddNoteActivity : AppCompatActivity(), View.OnClickListener {
 

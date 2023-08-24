@@ -5,11 +5,11 @@ plugins {
 }
 
 android {
-    namespace = "com.carlos.room_study"
+    namespace = "com.carlos.noteApp"
     compileSdk = 33
 
     defaultConfig {
-        applicationId = "com.carlos.room_study"
+        applicationId = "com.carlos.noteApp"
         minSdk = 27
         targetSdk = 33
         versionCode = 1

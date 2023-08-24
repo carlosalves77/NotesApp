@@ -1,11 +1,11 @@
-package com.carlos.room_study.db
+package com.carlos.noteApp.db
 
 
 import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
-import com.carlos.room_study.model.Note
+import com.carlos.noteApp.model.Note
 
 @Database(entities = [Note::class], version = 1)
 abstract class AppDatabase: RoomDatabase() {

@@ -1,4 +1,4 @@
-package com.carlos.room_study.ui
+package com.carlos.noteApp.ui
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -7,9 +7,9 @@ import android.view.View
 import androidx.appcompat.widget.SearchView
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.carlos.room_study.adapter.UserAdapter
-import com.carlos.room_study.databinding.ActivityMainBinding
-import com.carlos.room_study.viewmodel.NoteViewModel
+import com.carlos.noteApp.adapter.UserAdapter
+import com.carlos.noteApp.viewmodel.NoteViewModel
+import com.carlos.noteApp.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity(), View.OnClickListener {
 

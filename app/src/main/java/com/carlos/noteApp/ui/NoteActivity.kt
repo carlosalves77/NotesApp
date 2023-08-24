@@ -1,14 +1,14 @@
-package com.carlos.room_study.ui
+package com.carlos.noteApp.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.ViewModelProvider
-import com.carlos.room_study.R
-import com.carlos.room_study.databinding.ActivityNoteBinding
-import com.carlos.room_study.model.Note
-import com.carlos.room_study.viewmodel.NoteViewModel
+import com.carlos.noteApp.R
+import com.carlos.noteApp.databinding.ActivityNoteBinding
+import com.carlos.noteApp.model.Note
+import com.carlos.noteApp.viewmodel.NoteViewModel
 import com.google.android.material.snackbar.Snackbar
 
 class NoteActivity : AppCompatActivity(), View.OnClickListener {

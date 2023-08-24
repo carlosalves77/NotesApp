@@ -1,13 +1,13 @@
-package com.carlos.room_study.adapter
+package com.carlos.noteApp.adapter
 
 import android.annotation.SuppressLint
 import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.carlos.room_study.databinding.NotesRowBinding
-import com.carlos.room_study.model.Note
-import com.carlos.room_study.ui.NoteActivity
+import com.carlos.noteApp.databinding.NotesRowBinding
+import com.carlos.noteApp.model.Note
+import com.carlos.noteApp.ui.NoteActivity
 import kotlin.random.Random
 
 class UserAdapter() : RecyclerView.Adapter<UserAdapter.UserViewHolder>() {

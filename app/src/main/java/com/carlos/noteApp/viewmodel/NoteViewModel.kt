@@ -1,12 +1,12 @@
-package com.carlos.room_study.viewmodel
+package com.carlos.noteApp.viewmodel
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.viewModelScope
-import com.carlos.room_study.db.AppDatabase
-import com.carlos.room_study.model.Note
-import com.carlos.room_study.repositories.NoteRepository
+import com.carlos.noteApp.db.AppDatabase
+import com.carlos.noteApp.model.Note
+import com.carlos.noteApp.repositories.NoteRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
