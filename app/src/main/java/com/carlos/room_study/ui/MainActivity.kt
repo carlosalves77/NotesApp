@@ -9,13 +9,13 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.carlos.room_study.adapter.UserAdapter
 import com.carlos.room_study.databinding.ActivityMainBinding
-import com.carlos.room_study.viewmodel.UserViewModel
+import com.carlos.room_study.viewmodel.NoteViewModel
 
 class MainActivity : AppCompatActivity(), View.OnClickListener {
 
     private lateinit var binding: ActivityMainBinding
     private val adapter = UserAdapter()
-    private lateinit var mUserViewModel: UserViewModel
+    private lateinit var mNoteViewModel: NoteViewModel
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -27,8 +27,8 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_FULLSCREEN
 
 
-        mUserViewModel = ViewModelProvider(this)[UserViewModel::class.java]
-        mUserViewModel.getAllUser.observe(this) { user ->
+        mNoteViewModel = ViewModelProvider(this)[NoteViewModel::class.java]
+        mNoteViewModel.getAllNote.observe(this) { user ->
             adapter.setData(user)
         }
 
@@ -59,6 +59,10 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         when (v?.id) {
             binding.fab.id -> {
                 startActivity(Intent(this, AddNoteActivity::class.java))
+                binding.searchView.visibility = View.GONE
+                binding.searchBtn.visibility = View.VISIBLE
+                binding.title.visibility = View.VISIBLE
+                binding.infoBtn.visibility = View.VISIBLE
             }
         }
         when (v?.id) {
@@ -76,7 +80,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
     }
 
     private fun emptyDatabaseCheck() {
-        mUserViewModel.getAllUser.observe(this) { data ->
+        mNoteViewModel.getAllNote.observe(this) { data ->
             if (data.isEmpty()) {
                 binding.emptyNoteImage.visibility = View.VISIBLE
                 binding.emptyNoteText.visibility = View.VISIBLE
@@ -105,7 +109,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
 
     private fun filterSearchView(query: String) {
         val searchQuery = "%$query%"
-        mUserViewModel.searchDatabase(searchQuery).observe(this) { list ->
+        mNoteViewModel.searchDatabase(searchQuery).observe(this) { list ->
             list.let {
                 adapter.setData(it)
             }

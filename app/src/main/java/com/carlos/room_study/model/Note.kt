@@ -4,11 +4,11 @@ import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
-@Entity(tableName = "users_table")
-data class User(
+@Entity(tableName = "note_table")
+data class Note(
     @PrimaryKey(autoGenerate = true)
     @ColumnInfo(name = "Id")val id: Int,
 
-    @ColumnInfo(name = "name")val firstName: String,
-    @ColumnInfo(name = "Last name")val lastName: String,
+    @ColumnInfo(name = "noteTitle")val noteTitle: String,
+    @ColumnInfo(name = "note")val note: String,
 )

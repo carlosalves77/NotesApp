@@ -68,7 +68,7 @@
 
 
     <EditText
-        android:id="@+id/etFirstName"
+        android:id="@+id/et_noteTitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
@@ -84,7 +84,7 @@
     </EditText>
 
     <EditText
-        android:id="@+id/etLastName"
+        android:id="@+id/et_noteDesc"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"

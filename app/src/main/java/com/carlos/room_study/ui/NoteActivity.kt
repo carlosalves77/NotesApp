@@ -1,23 +1,20 @@
 package com.carlos.room_study.ui
 
-import android.content.Intent
-import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.ViewModelProvider
 import com.carlos.room_study.R
 import com.carlos.room_study.databinding.ActivityNoteBinding
-import com.carlos.room_study.model.User
-import com.carlos.room_study.viewmodel.UserViewModel
+import com.carlos.room_study.model.Note
+import com.carlos.room_study.viewmodel.NoteViewModel
 import com.google.android.material.snackbar.Snackbar
 
 class NoteActivity : AppCompatActivity(), View.OnClickListener {
 
     private lateinit var binding: ActivityNoteBinding
-    private lateinit var mUserViewModel: UserViewModel
+    private lateinit var mNoteViewModel: NoteViewModel
     override fun onCreate(savedInstanceState: Bundle?) {
         binding = ActivityNoteBinding.inflate(layoutInflater)
         super.onCreate(savedInstanceState)
@@ -27,7 +24,7 @@ class NoteActivity : AppCompatActivity(), View.OnClickListener {
         @Suppress("DEPRECATION")
         window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_FULLSCREEN
 
-        mUserViewModel = ViewModelProvider(this)[UserViewModel::class.java]
+        mNoteViewModel = ViewModelProvider(this)[NoteViewModel::class.java]
 
         binding.backBtn.setOnClickListener(this)
         binding.deleteBtn.setOnClickListener(this)
@@ -49,7 +46,7 @@ class NoteActivity : AppCompatActivity(), View.OnClickListener {
             binding.deleteBtn.id -> {
                 // delete a user by id
                 val id = intent.getIntExtra("id", 0)
-                mUserViewModel.deleteUser(id)
+                mNoteViewModel.deleteNote(id)
                 return finish()
             }
         }
@@ -70,8 +67,8 @@ class NoteActivity : AppCompatActivity(), View.OnClickListener {
                 val id = intent.getIntExtra("id", 0)
                 val firstName = binding.etNoteTitle.text.toString()
                 val lastName = binding.etNote.text.toString()
-                val user = User(id, firstName, lastName)
-                mUserViewModel.updateUser(user)
+                val note = Note(id, firstName, lastName)
+                mNoteViewModel.updateNote(note)
 
 
                 binding.etNoteTitle.focusable = View.NOT_FOCUSABLE
@@ -98,8 +95,8 @@ class NoteActivity : AppCompatActivity(), View.OnClickListener {
         binding.etNote.focusable = View.NOT_FOCUSABLE
         binding.etNote.isFocusableInTouchMode = false
 
-        val title = intent.getStringExtra("firstName")
-        val note = intent.getStringExtra("lastName")
+        val title = intent.getStringExtra("noteTitle")
+        val note = intent.getStringExtra("note")
 
         binding.etNoteTitle.setText(title)
         binding.etNote.setText(note)
